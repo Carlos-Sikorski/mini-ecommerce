@@ -18,15 +18,17 @@ function isTextoValido(input) {
 
     if (input1 === "") {
 
-        console.log("falso");
+        return false;
     }
 
     else {
-        console.log("verdade")
+        return true;
     }
 
 }
 
-isTextoValido("       ")
+module.exports = {isNumeroValido, isTextoValido}
+
+
 
 
