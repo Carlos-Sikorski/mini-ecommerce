@@ -53,32 +53,11 @@ function buscarProduto(input, lista) {
 
     else {                                                                                                          
 
-        const nome = lista[buscandoID].nome
-
-        rl.question(`Tem certeza que deseja deletar o ${nome}? [1]SIM [2]NÃO\n`, (input_1) => {
-
-            const escolha = parseInt(input_1)
-
-            switch (escolha) {
-
-                case 1:
-                    lista.splice(buscandoID, 1)
-                    voltarMenu()
-                    break
-
-                case 2:
-                    console.log('Exclusão de produto *cancelada*.')
-                    voltarMenu()
-                    break
-
-                default:
-                    console.log('Opção inválida, tente novamente!')
-                    voltarMenu()
-
-            }
-
-        })
+        console.log(`\nID: ${lista[buscandoID].id} || Nome: ${lista[buscandoID].nome} || Preço: ${lista[buscandoID].preco}\n`)
+        voltarMenu()
 
     }
 
 }
+
+module.exports = {cadastrarProduto, listarProdutos, buscarProduto}
