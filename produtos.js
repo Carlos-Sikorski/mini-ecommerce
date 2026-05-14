@@ -1,13 +1,17 @@
-const { parse } = require('path');
-const readline = require('readline');
-const { deflate } = require('zlib');
-const rl = readline.createInterface({ input: process.stdin, output: process.stdout })
-
 let catalogo = [];
 
-function cadastrarProduto(id, nome, preco) {
+const {isNumeroValido, isTextoValido} = require('./validacoes')
 
-    let id_cadastro = id
+function cadastrarProduto(prompt, menuu) {
+
+    const nome = isTextoValido(prompt("Informe o nome do produto: "))
+    if(nome === false) {
+        console.log("digite um nome válido!")
+        return cadastrarProduto(prompt)
+    }
+    const preco = isNumeroValido(prompt("Informe o preço unitário do produto: "))
+
+    let id_cadastro = catalogo.length + 1
     let nome_cadastro = nome
     let preco_cadastro = preco
 
@@ -20,7 +24,10 @@ function cadastrarProduto(id, nome, preco) {
     };
 
     catalogo.push(obj_cadastro)
-
+    console.log(catalogo)
+    
+    // return menu()
+    return menuu()
 }
 
 function listarProdutos(lista) {

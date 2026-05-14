@@ -6,7 +6,7 @@ function isNumeroValido(input) {
 
     } else if (input >= 0) {
 
-        return true
+        return input
 
     }
 
@@ -16,13 +16,13 @@ function isTextoValido(input) {
 
     let input1 = input.trim()
 
-    if (input1 === "") {
+    if (input1 === ""|| !isNaN(input1)) {
 
         return false;
     }
 
     else {
-        return true;
+        return input;
     }
 
 }
