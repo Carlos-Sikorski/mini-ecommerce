@@ -30,7 +30,7 @@ function cadastrarProduto(prompt, menuu) {
     return menuu()
 }
 
-function listarProdutos(lista) {
+function listarProdutos(lista, menuu) {
 
     console.log('\n\n---------------LISTA DE PRODUTOS---------------\n\n')
 
@@ -41,7 +41,7 @@ function listarProdutos(lista) {
 
     });
 
-    voltarMenu()
+    return menuu()
 }
 
 
@@ -67,4 +67,4 @@ function buscarProduto(input, lista) {
 
 }
 
-module.exports = {cadastrarProduto, listarProdutos, buscarProduto}
+module.exports = {cadastrarProduto, listarProdutos, buscarProduto, catalogo}

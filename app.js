@@ -1,7 +1,7 @@
 const prompt = require('prompt-sync')()
 
 const { adicionarItem, exibirResumo } = require('./carrinho.js')
-const { cadastrarProduto, listarProdutos, buscarProduto } = require('./produtos.js')
+const { cadastrarProduto, listarProdutos, buscarProduto, catalogo } = require('./produtos.js')
 const { isNumeroValido, isTextoValido } = require('./validacoes.js')
 
 function menu() {
@@ -16,7 +16,7 @@ function menu() {
             break;
 
         case 2:
-            listarProdutos()
+            listarProdutos(catalogo, menu)
             break;
 
         case 3:

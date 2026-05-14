@@ -1,6 +1,8 @@
 meuCarrinho = [];
 
-function adicionarItem(lista, produto, quantidade, desconto) {
+function adicionarItem(lista, id, quantidade, desconto, prompt) {
+
+    
 
     let preco_inicial = lista[produto].preco * (1.00 - desconto)
     let produto_final = preco_inicial * quantidade
