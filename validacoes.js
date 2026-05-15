@@ -27,7 +27,27 @@ function isTextoValido(input) {
 
 }
 
-module.exports = {isNumeroValido, isTextoValido}
+function findID(input, lista) {
+
+    const idSearch = parseInt(input)
+
+    const buscandoID = lista.findIndex(element => element.id === idSearch)
+
+    if (buscandoID === -1) {
+        console.log(buscandoID)
+        return buscandoID
+
+    }
+
+    else {                                                                                                          
+
+        return buscandoID
+
+    }
+
+}
+
+module.exports = {isNumeroValido, isTextoValido, findID}
 
 
 

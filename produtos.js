@@ -1,11 +1,11 @@
 let catalogo = [];
 
-const {isNumeroValido, isTextoValido} = require('./validacoes')
+const { isNumeroValido, isTextoValido, findID } = require('./validacoes')
 
 function cadastrarProduto(prompt, menuu) {
 
     const nome = isTextoValido(prompt("Informe o nome do produto: "))
-    if(nome === false) {
+    if (nome === false) {
         console.log("digite um nome válido!")
         return cadastrarProduto(prompt)
     }
@@ -25,12 +25,12 @@ function cadastrarProduto(prompt, menuu) {
 
     catalogo.push(obj_cadastro)
     console.log(catalogo)
-    
+
     // return menu()
     return menuu()
 }
 
-function listarProdutos(lista, menuu) {
+function listarProdutos(lista) {
 
     console.log('\n\n---------------LISTA DE PRODUTOS---------------\n\n')
 
@@ -41,30 +41,31 @@ function listarProdutos(lista, menuu) {
 
     });
 
-    return menuu()
 }
 
 
-function buscarProduto(input, lista) {
+function buscarProduto(lista, menuu, prompt) {
 
-    const idSearch = parseInt(input)
+    listarProdutos(lista)
 
-    const buscandoID = lista.findIndex(element => element.id === idSearch)
+    console.log("Digite o ID do produto que deseja consultar ")
+    const input = parseInt(prompt("R: "))
 
-    if (buscandoID === -1) {
+    const validandoID = findID(input, lista)
+
+    if(validandoID !== -1) {
+
+        console.log(`\nID: ${lista[validandoID].id} || Nome: ${lista[validandoID].nome} || Preço: ${lista[validandoID].preco}\n`)
+        return menuu()
+
+    }
+
+    else {
 
         console.log("Cadastro não encontrado! Tente novamente")
-        voltarMenu()
-
-    }
-
-    else {                                                                                                          
-
-        console.log(`\nID: ${lista[buscandoID].id} || Nome: ${lista[buscandoID].nome} || Preço: ${lista[buscandoID].preco}\n`)
-        voltarMenu()
-
+        return menuu()
     }
 
 }
 
-module.exports = {cadastrarProduto, listarProdutos, buscarProduto, catalogo}
+module.exports = { cadastrarProduto, listarProdutos, buscarProduto, catalogo }

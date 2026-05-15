@@ -1,14 +1,16 @@
 const prompt = require('prompt-sync')()
 
-const { adicionarItem, exibirResumo } = require('./carrinho.js')
+const { adicionarItem, exibirResumo, comprando, meuCarrinho} = require('./carrinho.js')
 const { cadastrarProduto, listarProdutos, buscarProduto, catalogo } = require('./produtos.js')
 const { isNumeroValido, isTextoValido } = require('./validacoes.js')
 
 function menu() {
 
-    const id = 
-    parseInt(prompt("Digite a opção desejada: [1]Cadastrar Produto [2]Listar Catalogo [3]Adicionar Item [4]Exibir Menu [0]Sair R: "))
-        console.log("here " + id)
+    console.log("Digite a opção desejada: [1]Cadastrar Produto [2]Listar Catalogo [3]Buscar Produto [4]Adicionar Carrinho [5]Exibir Resumo [6]Menu [0]Sair")
+
+    const id =
+        parseInt(prompt("R: "))
+
     switch (id) {
 
         case 1:
@@ -16,15 +18,24 @@ function menu() {
             break;
 
         case 2:
-            listarProdutos(catalogo, menu)
+            listarProdutos(catalogo)
+            menu()
             break;
 
         case 3:
-            adicionarItem()
+            buscarProduto(catalogo, menu, prompt)
             break;
 
-        case 4:
-            exibirResumo()
+        case 4:comprando(prompt, menu, catalogo)
+
+            break;
+
+        case 5:
+            exibirResumo(meuCarrinho, menu)
+            break;
+
+        case 6:
+            menu()
             break;
 
         case 0:
@@ -42,6 +53,6 @@ function menu() {
 
 menu()
 
-module.exports={ 
-    menu 
+module.exports = {
+    menu
 }
